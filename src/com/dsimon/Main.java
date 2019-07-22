@@ -8,22 +8,20 @@ public class Main {
     public static void main(String[] args) {
         Playlist playlist = new Playlist("My Playlist");
 
-        LinkedList<Song> albumOneSongs = new LinkedList<Song>();
-        albumOneSongs.add(new Song("SongOne", 123));
-        albumOneSongs.add(new Song("SongTwo", 345));
-        albumOneSongs.add(new Song("SongThree", 567));
-        albumOneSongs.add(new Song("SongFour", 890));
-        albumOneSongs.add(new Song("SongFive", 012));
-        playlist.addAlbum("AlbumOne", albumOneSongs);
+        playlist.addAlbum("AlbumOne");
+        playlist.addSongToAlbum("AlbumOne", new Song("SongOne", 123));
+        playlist.addSongToAlbum("AlbumOne", new Song("SongTwo", 345));
+        playlist.addSongToAlbum("AlbumOne", new Song("SongThree", 567));
+        playlist.addSongToAlbum("AlbumOne", new Song("SongFour", 890));
+        playlist.addSongToAlbum("AlbumOne", new Song("SongFive", 012));
 
-        LinkedList<Song> albumTwoSongs = new LinkedList<Song>();
-        albumTwoSongs.add(new Song("AlbumTwo-One", 123));
-        albumTwoSongs.add(new Song("AlbumTwo-Two", 123));
-        albumTwoSongs.add(new Song("AlbumTwo-Three", 123));
-        albumTwoSongs.add(new Song("AlbumTwo-Four", 123));
-        albumTwoSongs.add(new Song("AlbumTwo-Five", 123));
-        albumTwoSongs.add(new Song("AlbumTwo-Six", 123));
-        playlist.addAlbum("AlbumTwo", albumTwoSongs);
+        playlist.addAlbum("AlbumTwo");
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-One", 123));
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-Two", 123));
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-Three", 123));
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-Four", 123));
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-Five", 123));
+        playlist.addSongToAlbum("AlbumTwo", new Song("AlbumTwo-Six", 123));
 
         playlist.runPlayList();
     }

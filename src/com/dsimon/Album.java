@@ -5,11 +5,11 @@ import java.util.LinkedList;
 
 public class Album {
     private String name;
-    private LinkedList<Song> songs;
+    private SongList songs;
 
-    public Album(String name, LinkedList<Song> songs) {
+    public Album(String name) {
         this.name = name;
-        this.songs = songs;
+        this.songs = new SongList();
     }
 
     public String getName() {
@@ -17,24 +17,48 @@ public class Album {
     }
 
     public LinkedList<Song> getSongs() {
-        return songs;
+        return songs.getAllSongs();
     }
 
     public Song getSong(int songIndex) {
-        return songs.get(songIndex);
-    }
-
-    public void addSong(Song song) {
-        songs.add(song);
+        return songs.getSong(songIndex);
     }
 
     public void displayList() {
-        Iterator songIterator = songs.listIterator();
-        int counter = 0;
-        while (songIterator.hasNext()) {
-            Song currentSong = (Song) songIterator.next();
-            System.out.println("   " + counter + ". " + currentSong.getTitle() + " - " + currentSong.getDuration());
-            counter++;
+        songs.displayList();
+    }
+
+    public void addSOng(Song song) {
+        songs.addSong(song);
+    }
+
+    private class SongList {
+        private LinkedList<Song> songs;
+
+        public SongList() {
+            this.songs = new LinkedList<Song>();
+        }
+
+        public void addSong(Song song) {
+            songs.add(song);
+        }
+
+        public LinkedList<Song> getAllSongs() {
+            return songs;
+        }
+
+        public Song getSong(int songIndex) {
+            return songs.get(songIndex);
+        }
+
+        public void displayList() {
+            Iterator songIterator = songs.listIterator();
+            int counter = 0;
+            while (songIterator.hasNext()) {
+                Song currentSong = (Song) songIterator.next();
+                System.out.println("   " + counter + ". " + currentSong.getTitle() + " - " + currentSong.getDuration());
+                counter++;
+            }
         }
     }
 }

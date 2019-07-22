@@ -18,9 +18,23 @@ public class Playlist {
         playList = new LinkedList<Song>();
     }
 
-    public void addAlbum(String name, LinkedList<Song> songs) {
-        Album newAlbum = new Album(name, songs);
+    public void addAlbum(String name) {
+        Album newAlbum = new Album(name);
         albums.add(newAlbum);
+    }
+
+    public void addSongToAlbum(String albumName, Song song) {
+        Album albumToAdd = findAlbum(albumName);
+        albumToAdd.addSOng(song);
+    }
+
+    private Album findAlbum(String albumName) {
+        for (Album currentAlbum: albums) {
+            if (currentAlbum.getName().equals(albumName)) {
+                return currentAlbum;
+            }
+        }
+        return null;
     }
 
     public void runPlayList() {
